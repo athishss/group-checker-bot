@@ -42,7 +42,7 @@ class ProxyManager:
         except:
             return None
 
-    def validate_proxies(self, max_workers=1500):
+    def validate_proxies(self, max_workers=700):
         """Validate proxies with progress tracking"""
         proxies = self.fetch_proxies()
         total = len(proxies)
