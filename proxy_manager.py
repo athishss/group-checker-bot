@@ -27,7 +27,7 @@ class ProxyManager:
             response = requests.get(
                 self.test_url,
                 proxies={"http": f"http://{proxy}", "https": f"http://{proxy}"},
-                timeout=10
+                timeout=5  # Reduced timeout for faster testing
             )
             if response.status_code == 200:
                 return proxy
@@ -36,13 +36,13 @@ class ProxyManager:
             response = requests.get(
                 self.test_url,
                 proxies={"http": f"socks5://{proxy}", "https": f"socks5://{proxy}"},
-                timeout=10
+                timeout=5  # Reduced timeout for faster testing
             )
             return proxy if response.status_code == 200 else None
         except:
             return None
 
-    def validate_proxies(self, max_workers=100):
+    def validate_proxies(self, max_workers=1500):
         """Validate proxies with progress tracking"""
         proxies = self.fetch_proxies()
         total = len(proxies)

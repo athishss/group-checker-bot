@@ -13,7 +13,7 @@ class CookieFreeScanner:
             response = requests.get(
                 f"https://groups.roblox.com/v1/groups/{group_id}",
                 proxies={"http": f"http://{proxy}", "https": f"http://{proxy}"},
-                timeout=10
+                timeout=5  # Reduced timeout for faster checking
             )
             if response.status_code == 200:
                 data = response.json()
